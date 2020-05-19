@@ -45,3 +45,7 @@ User Related:
 - `set role __test__;`: Change role for current session to `__test__`.
 - `grant __test2__ to __test1__;`: Allow `__test1__` to set its role as `__test2__`.
 - `\deu+`: List all user mapping on server
+
+## Database Schema
+
+![database schema](./imgs/database_schmea.jpg "Schema")
