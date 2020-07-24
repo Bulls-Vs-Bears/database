@@ -7,8 +7,8 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA bvb_accounts GRANT SELECT ON TABLES TO readac
 -- Create Writer Group
 CREATE ROLE writeaccess LOGIN;
 GRANT USAGE ON SCHEMA bvb_accounts TO writeaccess;
+GRANT USAGE, INSERT ON ALL SEQUENCES IN SCHEMA bvb_accounts to writeaccess;
 ALTER DEFAULT PRIVILEGES IN SCHEMA bvb_accounts GRANT SELECT, INSERT, UPDATE ON TABLES TO writeaccess;
--- GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA bvb_accounts to writeaccess;
 
 -- Create Deletion Group
 CREATE ROLE deleteaccess LOGIN;
