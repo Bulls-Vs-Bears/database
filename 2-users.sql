@@ -1,17 +1,17 @@
 -- Create reader group
-CREATE ROLE readaccess;
+CREATE ROLE readaccess LOGIN;
 GRANT USAGE ON SCHEMA bvb_accounts TO readaccess;
 ALTER DEFAULT PRIVILEGES IN SCHEMA bvb_accounts GRANT SELECT ON TABLES TO readaccess;
 
 -- Create Writer Group
-CREATE ROLE writeaccess;
+CREATE ROLE writeaccess LOGIN;
 GRANT USAGE ON SCHEMA bvb_accounts TO writeaccess;
-ALTER DEFAULT PRIVILEGES IN SCHEMA bvb_accounts GRANT SELECT, INSERT, UPDATE ON TABLES TO readaccess;
+ALTER DEFAULT PRIVILEGES IN SCHEMA bvb_accounts GRANT SELECT, INSERT, UPDATE ON TABLES TO writeaccess;
 
 -- Create Deletion Group
-CREATE ROLE deleteaccess;
+CREATE ROLE deleteaccess LOGIN;
 GRANT USAGE ON SCHEMA bvb_accounts TO deleteaccess;
-ALTER DEFAULT PRIVILEGES IN SCHEMA bvb_accounts GRANT SELECT, DELETE ON TABLES TO readaccess;
+ALTER DEFAULT PRIVILEGES IN SCHEMA bvb_accounts GRANT SELECT, DELETE ON TABLES TO deleteaccess;
 
 -- bvb reader
 DROP USER IF EXISTS bvb_reader;
